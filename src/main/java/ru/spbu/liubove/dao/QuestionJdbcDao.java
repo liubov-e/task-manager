@@ -1,5 +1,6 @@
 package ru.spbu.liubove.dao;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import ru.spbu.liubove.domain.model.OpenQuestionCard;
 import ru.spbu.liubove.domain.repo.QuestionRepository;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Primary
 @Repository
 public class QuestionJdbcDao implements QuestionRepository {
     private static final String DDL_QUERY = """
