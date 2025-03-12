@@ -1,5 +1,6 @@
 package ru.spbu.liubove.domain.service;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ru.spbu.liubove.domain.model.OpenQuestionCard;
 import ru.spbu.liubove.domain.repo.QuestionRepository;
@@ -11,7 +12,7 @@ import java.util.Optional;
 public class QuestionService {
     private final QuestionRepository repository;
 
-    public QuestionService(QuestionRepository repository) {
+    public QuestionService(@Qualifier("jdbcTemplateDao") QuestionRepository repository) {
         this.repository = repository;
     }
 
