@@ -1,14 +1,22 @@
 package ru.spbu.liubove.console;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.spbu.liubove.console.config.SpringConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ru.spbu.liubove.console.controller.ConsoleController;
 
-public class Application {
+@SpringBootApplication
+public class Application implements CommandLineRunner {
+    @Autowired
+    private ConsoleController controller;
+
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
-        ConsoleController controller = context.getBean(ConsoleController.class);
+        SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
         controller.interactWithUser();
     }
 }

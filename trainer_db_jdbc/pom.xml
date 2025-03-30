@@ -18,7 +18,16 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring-context.version}</version>
+        </dependency>
         <dependency>
             <groupId>ru.spbu.liubove</groupId>
             <artifactId>trainer_domain</artifactId>
