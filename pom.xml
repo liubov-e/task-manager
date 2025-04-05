@@ -18,7 +18,7 @@
     <module>trainer_ui_spring</module>
     <module>trainer_db_spring_hibernate</module>
     <module>trainer_api</module>
-      <module>trainer_httpclient</module>
+    <module>trainer_httpclient</module>
     <module>trainer_api_dto</module>
   </modules>
 

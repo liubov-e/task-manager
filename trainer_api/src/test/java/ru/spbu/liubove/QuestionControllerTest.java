@@ -23,8 +23,8 @@ class QuestionControllerTest {
     private QuestionController questionController;
 
     @Test
-    @DisplayName("Создание Task с корректными code и title проходит успешно")
-    void having_task_when_list_then_return() {
+    @DisplayName("Question is created and added to repo")
+    void testQuestionController() {
         Mockito.when(questionRepository.findAll())
             .thenReturn(List.of(new OpenQuestionCard(12L, "Why does anything exist?", "Khz")));
         List<OpenQuestionCardDto> list = questionController.getAll();
