@@ -1,6 +1,7 @@
 package ru.spbu.liubove.api.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.web.bind.annotation.*;
 import ru.spbu.liubove.api.dto.OpenQuestionCardDto;
 import ru.spbu.liubove.api.mapper.QuestionDtoMapper;
@@ -26,7 +27,7 @@ public class QuestionController {
         description = "Get list of all stored questions without filtering"
     )
     @GetMapping("")
-    List<OpenQuestionCardDto> getAll() {
+    public List<OpenQuestionCardDto> getAll() {
         return mapper.mapToDto(service.getAll());
     }
 
@@ -35,7 +36,7 @@ public class QuestionController {
         description = "Get a specific question using passed id"
     )
     @GetMapping("/{id}")
-    Optional<OpenQuestionCardDto> getById(@PathVariable Long id) {
+    public Optional<OpenQuestionCardDto> getById(@Parameter(description = "Question ID") @PathVariable Long id) {
         return service.getById(id).map(mapper::mapToDto);
     }
 
@@ -44,7 +45,16 @@ public class QuestionController {
         description = "Store a question passed as JSON object"
     )
     @PostMapping("")
-    void save(@RequestBody OpenQuestionCardDto question) {
+    public void save(@Parameter(description = "New question") @RequestBody OpenQuestionCardDto question) {
+        service.save(mapper.mapToModel(question));
+    }
+
+    @Operation(
+        summary = "Add question",
+        description = "Update a question with data passed as JSON object"
+    )
+    @PutMapping("")
+    public void update(@Parameter(description = "Updated question") @RequestBody OpenQuestionCardDto question) {
         service.save(mapper.mapToModel(question));
     }
 
@@ -53,7 +63,7 @@ public class QuestionController {
         description = "Remove a specific question using passed id"
     )
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Long id) {
+    public void delete(@Parameter(description = "Question ID") @PathVariable Long id) {
         service.delete(id);
     }
 }
