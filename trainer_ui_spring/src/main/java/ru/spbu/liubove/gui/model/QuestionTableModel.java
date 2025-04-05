@@ -6,7 +6,7 @@ import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 public class QuestionTableModel extends AbstractTableModel {
-    private final String[] columnNames = new String[]{"id", "Вопрос", "Ожидаемыый ответ"};
+    private final String[] columnNames = new String[]{"id", "Вопрос", "Ожидаемый ответ"};
     private final List<OpenQuestionCard> tasks;
 
     public QuestionTableModel(List<OpenQuestionCard> tasks) {

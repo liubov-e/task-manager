@@ -24,11 +24,6 @@ public class OpenQuestionCard {
         return question;
     }
 
-    public boolean checkAnswer(String answer) {
-        Objects.requireNonNull(answer);
-        return answer.equals(expectedAnswer);
-    }
-
     public String getExpectedAnswer() {
         return expectedAnswer;
     }

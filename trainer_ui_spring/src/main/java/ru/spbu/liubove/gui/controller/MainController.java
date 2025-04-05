@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.Optional;
 
 @Controller
-public class MainController {
+public class MainController implements Runnable {
     private final QuestionService service;
     private JFrame mainFrame;
     private JPanel mainPanel;
@@ -19,8 +19,8 @@ public class MainController {
         this.service = service;
     }
 
-    public void interactWithUser() {
-        mainFrame = new JFrame("Time Management Tool");
+    public void run() {
+        mainFrame = new JFrame("Тестирующая система");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(300, 300);
         mainFrame.setLocationRelativeTo(null);
